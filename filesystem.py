@@ -167,7 +167,7 @@ class FileSystem:
 
     # Search
     def find(self, name: str) -> list[str]:
-        """Absolute paths of every match named 'name' in the cwd subtree."""
+        """Absolute paths of every match named 'name' in the cwd subtree, sorted."""
         matches: list[str] = []
 
         def walk(directory: Directory) -> None:
@@ -178,4 +178,4 @@ class FileSystem:
                     walk(child)
 
         walk(self._cwd)
-        return matches
+        return sorted(matches)
